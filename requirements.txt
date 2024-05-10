@@ -4,4 +4,4 @@ matplotlib
 scikit-learn
 opencv-python
 keras
-torch
+tensorflow
