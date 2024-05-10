@@ -1,0 +1,10 @@
+,bharatanatyam,kathak,kathakali,kuchipudi,manipuri,mohiniyattam,odissi,sattriya,purulia_chhau
+bharatanatyam,14,3,0,1,0,0,0,0,0
+kathak,0,11,0,0,0,0,0,0,0
+kathakali,0,0,12,0,0,0,0,0,0
+kuchipudi,2,0,0,13,0,0,0,0,0
+manipuri,0,1,0,0,20,0,0,0,0
+mohiniyattam,0,0,0,0,0,16,0,0,0
+odissi,0,0,0,0,0,2,14,0,1
+sattriya,0,1,0,0,1,1,1,9,0
+purulia_chhau,0,0,0,0,0,0,0,0,8
