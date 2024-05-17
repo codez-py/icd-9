@@ -3,6 +3,9 @@
 #set text(size: 12pt)
 #set figure(placement: auto)
 
+#set table(fill: (rgb("EAF2F5"), none), stroke: rgb("21222C"))
+#show table.cell.where(y: 0): set text(weight: "bold")
+
 #align(center, text(17pt)[
   *Indian Dance Forms Classification*
 ])
@@ -121,9 +124,7 @@ layer used in VGG16 model.
 
 #let vgg16_summary = csv("screenshots/vgg16_layers.csv", delimiter: "|")
 #figure(
-  caption: "Summary of VGG-16.", table(
-    columns: 3, inset: 7pt, align: horizon, ..vgg16_summary.at(0).map(strong).flatten(), ..vgg16_summary.slice(1).flatten(),
-  ),
+  caption: "Summary of VGG-16.", table(columns: 3, inset: 7pt, align: horizon, ..vgg16_summary.flatten()),
 ) <vgg16_summary_table>
 
 = Dataset
@@ -165,9 +166,7 @@ will test the model.
 #let training_csv = csv("screenshots/training.csv")
 
 #figure(
-  caption: "Training VGG16 model.", table(
-    columns: 5, ..training_csv.at(0).map(strong).flatten(), ..training_csv.slice(1).flatten(),
-  ),
+  caption: "Training VGG16 model.", table(columns: 5, ..training_csv.flatten()),
 )
 
 = Performance Measurements
@@ -219,20 +218,14 @@ tested on our dataset.
   let class_report = csv("screenshots/classification_report.csv")
   let confusion_matrix = csv("screenshots/confusion_matrix.csv")
 
+  show table.cell.where(x: 0): set text(weight: "bold")
+
   let a = figure(
-    caption: "Classification Report", table(
-      columns: 5, inset: 10pt, align: horizon, ..class_report.at(0).map(strong).flatten(), ..class_report.slice(1).map(
-        x => x.enumerate().map(y => { let (ind, val) = y; if ind == 0 { strong(val) } else { val } }),
-      ).flatten(),
-    ),
+    caption: "Classification Report", table(columns: 5, inset: 10pt, align: horizon, ..class_report.flatten()),
   )
 
   let b = figure(
-    caption: "Confusion Matrix", table(
-      columns: 10, inset: 10pt, align: horizon, ..confusion_matrix.at(0).map(strong).flatten(), ..confusion_matrix.slice(1).map(
-        x => x.enumerate().map(y => { let (ind, val) = y; if ind == 0 { strong(val) } else { val } }),
-      ).flatten(),
-    ),
+    caption: "Confusion Matrix", table(columns: 10, inset: 10pt, align: horizon, ..confusion_matrix.flatten()),
   )
 
   [ #a <classification_report> #b <confusion_matrix> ]
